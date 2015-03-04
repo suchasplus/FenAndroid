@@ -1,8 +1,8 @@
 package com.weibo.biz.tongji.base;
 
 import android.app.Application;
-import android.content.Context;
 import android.util.Log;
+import com.weibo.biz.tongji.util.Brightness;
 import com.weibo.biz.tongji.util.helper;
 
 import java.util.Properties;
@@ -22,7 +22,9 @@ public class FenApplication extends Application {
 
         mApp = this;
         Log.e(FenApplication.class.getCanonicalName(), getSysInfo());
-
+        Brightness.init(this);
+        String b = Brightness.getInstance().isAutoBrightness() ? "Sys is AutoBrightness" : "Sys !NOT! AutoBrightnewss";
+        Log.e(FenApplication.class.getCanonicalName(), b + ", level: " + Brightness.getInstance().getScreenBrightness() + " , mode: " + Brightness.getInstance().getBrightnessMode());
     }
 
     @Override
