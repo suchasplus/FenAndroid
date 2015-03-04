@@ -44,6 +44,7 @@ public class Brightness {
     }
 
     // 设置屏幕亮度
+    @Deprecated //似乎没用
     public void setBrightness(Activity activity, int brightness) {
         WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
         lp.screenBrightness = brightness * (1f / 255f);

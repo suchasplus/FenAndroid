@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.weibo.biz.tongji.R;
 import com.weibo.biz.tongji.data.StatItem;
 import com.weibo.biz.tongji.data.StatItemFactory;
+import com.weibo.biz.tongji.util.Brightness;
 import com.weibo.biz.tongji.util.helper;
 
 
@@ -40,6 +41,11 @@ public class FenListFragment extends ListFragment {
 
         Log.i(TAG, "StartFenListFragment");
         Toast.makeText(getActivity(), "设备ID: " + helper.getUniqDeviceId(getActivity()), Toast.LENGTH_SHORT).show();
+//        Brightness.getInstance().stopAutoBrightness();
+//        Log.e(TAG, "B: "+ Brightness.getInstance().getScreenBrightness() );
+//        Brightness.getInstance().setBrightness(getActivity(), Brightness.getInstance().getScreenBrightness() * 100);
+//        Log.e(TAG, "B: "+ Brightness.getInstance().getScreenBrightness() );
+//        Log.e(TAG, "B_status: "+ Brightness.getInstance().isAutoBrightness());
 
         //mItems = StatItemFactory.get(getActivity()).getStatItems();
 
