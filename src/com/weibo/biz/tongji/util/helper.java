@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 
 import java.util.Arrays;
 
@@ -16,6 +19,25 @@ public class helper {
     private static String TAG="util.helper";
 
     private static String SYS_ID = null;
+
+    public static int dip2px(Context context, float dipValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
+    }
+
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+
+    public static int getEquipmentWidth(Context context) {
+        return context.getResources().getDisplayMetrics().widthPixels;
+    }
+
+    public static int getEquipmentHeight(Context context) {
+        return context.getResources().getDisplayMetrics().heightPixels;
+    }
+
 
     public static String getUniqDeviceId(Context context) {
         String id = getUniqueID(context);

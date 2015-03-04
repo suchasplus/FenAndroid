@@ -2,6 +2,8 @@ package com.weibo.biz.tongji.base;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
+import com.weibo.biz.tongji.util.helper;
 
 import java.util.Properties;
 
@@ -11,14 +13,15 @@ import java.util.Properties;
 public class FenApplication extends Application {
     public static FenApplication mApp;
 
+    private long mLaunchTime = -1; //标记启动时间
     private String mCurrentActivityName = null;
-
     private static boolean IS_APP_RUNNING = false;
 
     @Override
     public void onCreate() {
 
         mApp = this;
+        Log.e(FenApplication.class.getCanonicalName(), getSysInfo());
 
     }
 
@@ -69,5 +72,30 @@ public class FenApplication extends Application {
             e.printStackTrace();
         }
         return strVal;
+    }
+
+    public void setActivityName(String activityName) {
+    }
+
+    public void markLauchTime() {
+        mLaunchTime = System.currentTimeMillis();
+    }
+    public void delLauchTime() {
+        mLaunchTime = -1;
+    }
+    public void sendLaunchTime() {
+        if (mLaunchTime > 0) {
+            mLaunchTime = System.currentTimeMillis() - mLaunchTime;
+            if (mLaunchTime > 0) {
+                //new PvThread("startup_time", String.valueOf(mLaunchTime));
+            }
+            mLaunchTime = -1;
+        }
+    }
+
+    public String getSysInfo() {
+        int width = helper.getEquipmentWidth(this);
+        int height = helper.getEquipmentHeight(this);
+        return "screen[width]: " + width + " [height]: " + height;
     }
 }
