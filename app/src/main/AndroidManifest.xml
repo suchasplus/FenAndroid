@@ -37,33 +37,25 @@
         <activity android:name=".ui.StatActivity"
                   android:theme="@android:style/Theme.Holo.Light"
                 >
-            <intent-filter>
-            </intent-filter>
         </activity>
         <activity android:name=".ui.FentiaoCtrlActivity"
                   android:theme="@android:style/Theme.Holo.Light"
                 >
-            <intent-filter>
-            </intent-filter>
         </activity>
 
         <activity android:name=".test.TestChartActivity">
-            <intent-filter>
-            </intent-filter>
+
         </activity>
         <activity android:name=".test.TestActivity">
-            <intent-filter>
-            </intent-filter>
+
         </activity>
         <activity android:name=".test.ChartDemo1Acivity">
-            <intent-filter>
-            </intent-filter>
+
         </activity>
         <activity android:name=".ui.DemoChartActivity"
                 android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
                 >
-            <intent-filter>
-            </intent-filter>
+
         </activity>
     </application>
 
