@@ -6,7 +6,7 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import com.weibo.biz.tongji.R;
 
-public abstract class SingleFragmentActivity extends Activity {
+public abstract class SingleFragmentActivity extends BaseActivity {
 
 
     @Override
