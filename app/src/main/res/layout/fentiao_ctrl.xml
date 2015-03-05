@@ -7,7 +7,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pending Implemented"
+            android:text="Pending impl"
 
             android:id="@+id/pending_impl"
             android:layout_gravity="center_horizontal"
