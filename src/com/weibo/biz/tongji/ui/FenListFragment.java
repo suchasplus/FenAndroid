@@ -40,7 +40,7 @@ public class FenListFragment extends ListFragment {
         getActivity().setTitle(R.string.pending_update);
 
         Log.i(TAG, "StartFenListFragment");
-        Toast.makeText(getActivity(), "设备ID: " + helper.getUniqDeviceId(getActivity()), Toast.LENGTH_SHORT).show();
+
 //        Brightness.getInstance().stopAutoBrightness();
 //        Log.e(TAG, "B: "+ Brightness.getInstance().getScreenBrightness() );
 //        Brightness.getInstance().setBrightness(getActivity(), Brightness.getInstance().getScreenBrightness() * 100);

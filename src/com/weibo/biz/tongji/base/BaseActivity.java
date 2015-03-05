@@ -12,7 +12,7 @@ import com.weibo.biz.tongji.R;
 /**
  * Powered by suchasplus @15/3/5 00:15
  */
-public class BaseActivity extends Activity {
+public abstract class BaseActivity extends Activity {
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -46,38 +46,29 @@ public class BaseActivity extends Activity {
         }
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.move_left_in_activity, R.anim.move_right_out_activity);
+    }
     protected void closeActivity() {
         finish();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        return resolveCreateOptionMenu(menu);
     }
+
+    abstract protected boolean resolveCreateOptionMenu(Menu menu);
+    abstract protected boolean resolveOptionsItemSelected(MenuItem item);
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent i;
-        switch (item.getItemId()) {
 
-            case R.id.report:
-                String mailto = FenApplication.getBasicProperties("report_mailto");
-                i = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto", mailto, null));
-                i.putExtra(Intent.EXTRA_SUBJECT, "粉统计Android Issue");
-                i.putExtra(Intent.EXTRA_TEXT, "Your error report here...");
-                startActivity(Intent.createChooser(i, "Report Problem"));
-                break;
+        return resolveOptionsItemSelected(item);
 
-            case R.id.website:
-                String pc_url = FenApplication.getBasicProperties("pc_stat_url");
-                i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(pc_url));
-                startActivity(i);
-                break;
-        }
-        return true;
     }
 
 }

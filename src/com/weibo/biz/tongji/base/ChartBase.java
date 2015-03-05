@@ -1,12 +1,14 @@
 package com.weibo.biz.tongji.base;
 
 import android.app.Activity;
+import android.view.Menu;
+import android.view.MenuItem;
 import com.weibo.biz.tongji.R;
 
 /**
  * Powered by suchasplus @15/2/24 22:39
  */
-public class ChartBase extends Activity {
+public class ChartBase extends BaseActivity {
     protected String[] mMonths = new String[] {
             "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"
     };
@@ -16,9 +18,14 @@ public class ChartBase extends Activity {
             "Party Q", "Party R", "Party S", "Party T", "Party U", "Party V", "Party W", "Party X",
             "Party Y", "Party Z"
     };
+
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.move_left_in_activity, R.anim.move_right_out_activity);
+    protected boolean resolveCreateOptionMenu(Menu menu) {
+        return false;
+    }
+
+    @Override
+    protected boolean resolveOptionsItemSelected(MenuItem item) {
+        return false;
     }
 }
