@@ -40,6 +40,12 @@
             <intent-filter>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.FentiaoCtrlActivity"
+                  android:theme="@android:style/Theme.Holo.Light"
+                >
+            <intent-filter>
+            </intent-filter>
+        </activity>
 
         <activity android:name=".test.TestChartActivity">
             <intent-filter>

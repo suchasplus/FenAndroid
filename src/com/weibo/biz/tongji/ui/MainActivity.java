@@ -5,8 +5,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.weibo.biz.tongji.R;
 import com.weibo.biz.tongji.base.BaseActivity;
 import com.weibo.biz.tongji.base.FenApplication;
@@ -57,5 +58,24 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.index);
         TextView tvDeviceId = (TextView)findViewById(R.id.main_DeviceIdTextView);
         tvDeviceId.setText("设备ID: " + helper.getUniqDeviceId(this));
+
+        Button showStat = (Button)findViewById(R.id.main_showStatBtn);
+        showStat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MainActivity.this, StatActivity.class);
+                startActivity(i);
+            }
+        });
+
+        Button fentiaoCtrl = (Button)findViewById(R.id.main_showFentiaoBtn);
+        fentiaoCtrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, FentiaoCtrlActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
