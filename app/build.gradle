@@ -22,4 +22,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.google.guava:guava:18.0'
     compile files('libs/mpchartlibrary-2-0-0-beta.jar')
+    compile files('libs/android-support-v4.jar')
+    compile 'com.mcxiaoke.volley:library:1.0.11'
 }

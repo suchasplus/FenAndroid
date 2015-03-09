@@ -42,7 +42,15 @@
                   android:theme="@android:style/Theme.Holo.Light"
                 >
         </activity>
+        <activity android:name=".ui.TongJiChartActivity"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            >
 
+        </activity>
+
+        <activity android:name=".test.TestSwipeActivity">
+
+        </activity>
         <activity android:name=".test.TestChartActivity">
 
         </activity>

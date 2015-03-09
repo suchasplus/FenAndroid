@@ -1,5 +1,7 @@
 package com.weibo.biz.tongji.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 import com.weibo.biz.tongji.R;
 import com.weibo.biz.tongji.base.BaseActivity;
 import com.weibo.biz.tongji.base.FenApplication;
+import com.weibo.biz.tongji.test.TestSwipeActivity;
+import com.weibo.biz.tongji.util.Connectivity;
 import com.weibo.biz.tongji.util.helper;
 
 /**
@@ -55,6 +59,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void init() {
+
         setContentView(R.layout.index);
         TextView tvDeviceId = (TextView)findViewById(R.id.main_DeviceIdTextView);
         tvDeviceId.setText("设备ID: " + helper.getUniqDeviceId(this));
@@ -77,5 +82,39 @@ public class MainActivity extends BaseActivity {
                 startActivity(i);
             }
         });
+
+        Button testBtn = (Button)findViewById(R.id.main_showTestBtn);
+        testBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, TongJiChartActivity.class);
+                i.putExtra(TongJiChartActivity.VIEW_CATEGORY, "feed");
+                startActivity(i);
+            }
+        });
+
+        checkConn();
+
+
+    }
+
+
+    protected void checkConn() {
+        if( Connectivity.isConnected(this) && Connectivity.isConnectedWifi(this) ) {
+            return;
+        }
+
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setTitle(R.string.app_name)
+                .setMessage(R.string.fentiao_ctrl)
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+        AlertDialog ad = adb.create();
+        ad.show();
     }
 }
