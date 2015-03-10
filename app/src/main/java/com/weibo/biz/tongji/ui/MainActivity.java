@@ -93,28 +93,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        checkConn();
-
-
     }
 
 
-    protected void checkConn() {
-        if( Connectivity.isConnected(this) && Connectivity.isConnectedWifi(this) ) {
-            return;
-        }
-
-        AlertDialog.Builder adb = new AlertDialog.Builder(this);
-        adb.setTitle(R.string.app_name)
-                .setMessage(R.string.fentiao_ctrl)
-                .setCancelable(false)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-        AlertDialog ad = adb.create();
-        ad.show();
-    }
 }
