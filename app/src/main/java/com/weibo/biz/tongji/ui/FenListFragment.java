@@ -97,7 +97,8 @@ public class FenListFragment extends ListFragment {
             return;
         }
 
-        Intent i = new Intent(getActivity(), DemoChartActivity.class);
+        //Intent i = new Intent(getActivity(), DemoChartActivity.class);
+        Intent i = new Intent(getActivity(), TongJiChartActivity.class);
         //Intent i = new Intent(getActivity(), TestChartActivity.class);
         //i.putExtra(TestChartActivity.EXTRA_CHART_CAT, si.getAbbreviation());
         i.putExtra(DemoChartActivity.EXTRA_CHART_CAT, si.getAbbreviation());

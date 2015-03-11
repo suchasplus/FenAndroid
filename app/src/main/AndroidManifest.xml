@@ -51,10 +51,16 @@
             >
 
         </activity>
+        <activity android:name=".ui.SwipeStatActivity"
+            android:theme="@android:style/Theme.Holo.Light"
+            >
+
+        </activity>
 
         <activity android:name=".test.TestSwipeActivity">
 
         </activity>
+
         <activity android:name=".test.TestChartActivity">
 
         </activity>
