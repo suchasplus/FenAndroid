@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.weibo.biz.tongji.R;
-import com.weibo.biz.tongji.base.BaseActivity;
 import com.weibo.biz.tongji.base.BaseFragmentActivity;
 
 /**

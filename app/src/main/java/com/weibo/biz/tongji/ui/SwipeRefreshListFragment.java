@@ -15,6 +15,7 @@ import com.weibo.biz.tongji.R;
 import com.weibo.biz.tongji.base.SwipeRefreshListFragmentBase;
 import com.weibo.biz.tongji.data.Cheeses;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +24,8 @@ import java.util.List;
 public class SwipeRefreshListFragment extends SwipeRefreshListFragmentBase {
     private static final int LIST_ITEM_COUNT = 20;
     private static final String TAG = SwipeRefreshListFragment.class.getSimpleName();
+    private static ArrayList<String> mItems = new ArrayList<>();
+    private ArrayAdapter<String> adapter = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,14 +48,16 @@ public class SwipeRefreshListFragment extends SwipeRefreshListFragmentBase {
          * Create an ArrayAdapter to contain the data for the ListView. Each item in the ListView
          * uses the system-defined simple_list_item_1 layout that contains one TextView.
          */
-        ListAdapter adapter = new ArrayAdapter<String>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1,
-                Cheeses.randomList(LIST_ITEM_COUNT));
+//        ListAdapter adapter = new ArrayAdapter<String>(
+//                getActivity(),
+//                android.R.layout.simple_list_item_1,
+//                android.R.id.text1, SwipeRefreshListFragment.mItems
+//                /*Cheeses.randomList(LIST_ITEM_COUNT)*/);
 
         // Set the adapter between the ListView and its backing data.
-        setListAdapter(adapter);
+        //setListAdapter(adapter);
+        setRefreshing(true);
+        new DummyBackgroundTask().execute();
 
         // BEGIN_INCLUDE (setup_refreshlistener)
         /**
@@ -166,6 +171,14 @@ public class SwipeRefreshListFragment extends SwipeRefreshListFragmentBase {
     private void onRefreshComplete(List<String> result) {
         Log.i(TAG, "onRefreshComplete");
 
+        if(adapter == null) {
+                adapter = new ArrayAdapter<String>(
+                getActivity(),
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1, SwipeRefreshListFragment.mItems
+                /*Cheeses.randomList(LIST_ITEM_COUNT)*/);
+            setListAdapter(adapter);
+        }
         // Remove all items from the ListAdapter, and then replace them with the new items
         ArrayAdapter<String> adapter = (ArrayAdapter<String>) getListAdapter();
         adapter.clear();
